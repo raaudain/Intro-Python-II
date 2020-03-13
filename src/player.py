@@ -15,8 +15,16 @@ class Player:
         else:
             print("You cannot go in that direction.")
 
+    def item_inventory(self):
+        if len(self.inventory) == 0:
+            print("You have no items.")
+        else:
+            print("Your inventory")
+            for i in self.inventory:
+                print(i.name)
     def add_item(self, item):
         self.inventory.append(item)
+
 
     def drop_item(self, item):
         self.inventory.remove(item)

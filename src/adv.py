@@ -84,7 +84,7 @@ def take(x):
         user.current_room.drop_item(x)
         # User adds item to inventory
         user.add_item(x)
-        items[x].on_take()
+        #items[x].on_take()
     else:
         print(f"Nothing here.")
 
@@ -94,8 +94,7 @@ def drop(x):
         user.current_room.add_item(x)
         # Item is removed from user's inventory
         user.drop_item(x)
-        items[x].on_drop()
-        # print(f"")
+        #items[x].on_drop()
 
 
 instructions = "Enter n (North), s (South), e (East), or w (West) to move. Pressing q will quit the game: \n"
@@ -118,20 +117,20 @@ while True:
             for items in user.current_room.items:
                 print(f"New: {random_item}")
     # Take
-    elif moveUser.split(" ") in ("take", "t"):
+    elif moveUser in ["take", "t"]:
         if len(user.current_room.items) > 0:
             take(random_item)
         else:
             print("No item to take.")
     # Drop
-    elif moveUser.split()[0] in ("drop", "d"):
+    elif moveUser in ("drop", "d"):
         if len(user.inventory) > 0:
             drop(random_item)
             print(f"You dropped the this item: {random_item}")
         else:
             print("You have no items to drop.")
     # Inventory
-    elif moveUser.split() in ("inventory", "i"):
+    elif moveUser in ("inventory", "i"):
         if len(user.inventory) > 0:
             print(f"{user.inventory}")
         else:
